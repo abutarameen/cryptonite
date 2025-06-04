@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.tallaltasawar.showcase.presentation.Screen
 import com.tallaltasawar.showcase.presentation.ui.CurrencyListScreen
 import com.tallaltasawar.showcase.presentation.ui.currency_detail_screen.CurrencyDetailScreen
+import com.tallaltasawar.showcase.presentation.ui.btc_usd_graph.BtcUsdGraphScreen
 import com.tallaltasawar.showcase.ui.theme.ShowcaseTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,6 +45,11 @@ class MainActivity : ComponentActivity() {
                             route = Screen.CurrencyDetailsScreen.route + "/{currency_id}"
                         ) {
                             CurrencyDetailScreen()
+                        }
+                        composable(
+                            route = Screen.BtcUsdGraphScreen.route
+                        ) {
+                            BtcUsdGraphScreen()
                         }
                     }
                 }
