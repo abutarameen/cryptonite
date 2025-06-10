@@ -1,5 +1,7 @@
 This is sample work to showcase some of the work I am currently working on android.
 
+This repository now features **CI/CD** with GitHub Actions.
+
 ## Codebase Overview
 
 This repository demonstrates a cryptocurrency app built with Kotlin, Jetpack Compose, and Hilt. The project follows a clean architecture approach, separating concerns into data, domain, and presentation layers.
