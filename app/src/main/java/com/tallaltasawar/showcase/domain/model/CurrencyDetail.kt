@@ -9,7 +9,7 @@ data class CurrencyDetail(
     val id: String,
     val links: Links,
     val logo: String,
-    val message: String,
+    val message: String?,
     val name: String,
     val open_source: Boolean,
     val org_structure: String,
