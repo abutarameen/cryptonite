@@ -15,7 +15,7 @@ data class CurrencyDetailDto(
     val links: Links,
     val links_extended: List<LinksExtended>,
     val logo: String,
-    val message: String,
+    val message: String?,
     val name: String,
     val open_source: Boolean,
     val org_structure: String,
