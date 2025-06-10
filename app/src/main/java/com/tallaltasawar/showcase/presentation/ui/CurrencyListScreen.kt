@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -26,26 +27,23 @@ fun CurrencyListScreen(
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            item {
-                Text(
-                    text = "View BTC/USD Graph",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp)
-                        .clickable {
-                            navController.navigate(Screen.BtcUsdGraphScreen.route)
-                        },
-                    style = MaterialTheme.typography.h3
-                )
+        Column(modifier = Modifier.fillMaxSize()) {
+            Button(
+                onClick = { navController.navigate(Screen.BtcUsdGraphScreen.route) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            ) {
+                Text(text = "View BTC/USD Graph")
             }
-            items(state.currencies) { currency ->
-                CurrencyListItem(cryptoCurrency = currency, onCLick = {
-                    navController.navigate(Screen.CurrencyDetailsScreen.route + "/${currency.id}")
+            LazyColumn(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                items(state.currencies) { currency ->
+                    CurrencyListItem(cryptoCurrency = currency, onCLick = {
+                        navController.navigate(Screen.CurrencyDetailsScreen.route + "/${currency.id}")
+                    })
                 }
-                )
             }
         }
         if (state.error.isNotBlank()) {

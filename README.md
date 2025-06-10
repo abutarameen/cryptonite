@@ -23,3 +23,6 @@ This repository demonstrates a cryptocurrency app built with Kotlin, Jetpack Com
 ### Next Steps
 - Add tests for ViewModels and Compose UI.
 - Explore Retrofit, coroutines with `Flow`, and Jetpack Compose in depth.
+
+### CI Pipeline
+The repository includes a GitHub Actions workflow that builds a release APK on every push and pull request. The APK is placed in a `release/` directory and uploaded as a workflow artifact.

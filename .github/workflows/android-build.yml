@@ -1,0 +1,32 @@
+name: Android Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Configure local.properties
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+      - name: Build release APK
+        run: ./gradlew assembleRelease
+      - name: Gather APK
+        run: |
+          mkdir -p release
+          cp app/build/outputs/apk/release/app-release.apk release/
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release
+          path: release/app-release.apk
