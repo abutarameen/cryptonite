@@ -1,9 +1,9 @@
 package com.tallaltasawar.showcase.presentation.ui
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -27,19 +27,19 @@ fun CurrencyListScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             item {
-                Text(
-                    text = "View BTC/USD Graph",
+                Button(
+                    onClick = { navController.navigate(Screen.BtcUsdGraphScreen.route) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(10.dp)
-                        .clickable {
-                            navController.navigate(Screen.BtcUsdGraphScreen.route)
-                        },
-                    style = MaterialTheme.typography.h3
-                )
+                ) {
+                    Text(text = "View BTC/USD Graph")
+                }
+                Spacer(modifier = Modifier.height(4.dp))
             }
             items(state.currencies) { currency ->
                 CurrencyListItem(cryptoCurrency = currency, onCLick = {
